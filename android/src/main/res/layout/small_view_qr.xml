@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.journeyapps.barcodescanner.BarcodeView
+            android:id="@+id/zxing_barcode_surface"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:zxing_framing_rect_height="120dp"
+            app:zxing_framing_rect_width="200dp" />
+
+        <com.journeyapps.barcodescanner.ViewfinderView
+            android:id="@+id/zxing_viewfinder_view"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:zxing_possible_result_points="@color/zxing_custom_possible_result_points"
+            app:zxing_result_view="@color/zxing_custom_result_view"
+            app:zxing_viewfinder_laser="@color/zxing_custom_viewfinder_laser"
+            app:zxing_viewfinder_mask="@color/zxing_custom_viewfinder_mask" />
+
+    </RelativeLayout>
+</merge>
