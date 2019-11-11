@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:async' as prefix0;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -63,22 +64,22 @@ class SmallScanViewController {
   }
 
   Future<void> setResume() async {
-    return _channel.invokeMethod('scanResume');
+    return this._channel.invokeMethod('scanResume');
   }
   Future<void> setScanPause() async {
-    return _channel.invokeMethod('scanPause');
+    return this._channel.invokeMethod('scanPause');
   }
   Future<void> setTorchOn() async {
-    return _channel.invokeMethod('torchOn');
+    return this._channel.invokeMethod('torchOn');
   }
   Future<void> setTorchOff() async {
-    return _channel.invokeMethod('torchOff');
+    return this._channel.invokeMethod('torchOff');
   }
   Future<void> setShowViewFinder() async {
-    return _channel.invokeMethod('showViewFinder');
+    return this._channel.invokeMethod('showViewFinder');
   }
   Future<void> setHideViewFinder() async {
-    return _channel.invokeMethod('hideViewFinder');
+    return this._channel.invokeMethod('hideViewFinder');
   }
 
 }

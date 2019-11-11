@@ -1,8 +1,8 @@
 name: scan_view
 description: A new Flutter plugin.
 version: 0.0.1
-author: xiaosi
-homepage:
+author: xiaosi <xiaosiyouxiang@qq.com>
+homepage: https://github.com/x459530481/scan_view
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
