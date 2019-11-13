@@ -15,6 +15,9 @@ A new Flutter plugin.
   s.source_files = 'Classes/**/*'
   s.public_header_files = 'Classes/**/*.h'
   s.dependency 'Flutter'
+  s.dependency 'SnapKit', '~> 4.0'
+  s.dependency 'Toast-Swift', '~> 4.0'
+  s.resources = 'Assets/Resources/*'  #工程需要引入的资源文件（图片，xib等）
 
   s.ios.deployment_target = '8.0'
 end

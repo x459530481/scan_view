@@ -2,14 +2,14 @@ PODS:
   - Flutter (1.0.0)
   - scan_view (0.0.1):
     - Flutter
+    - SnapKit (~> 4.0)
+    - Toast-Swift (~> 4.0)
   - SnapKit (4.2.0)
   - Toast-Swift (4.0.1)
 
 DEPENDENCIES:
   - Flutter (from `.symlinks/flutter/ios`)
   - scan_view (from `.symlinks/plugins/scan_view/ios`)
-  - SnapKit (~> 4.0)
-  - Toast-Swift (~> 4.0)
 
 SPEC REPOS:
   trunk:
@@ -24,10 +24,10 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
-  scan_view: e242d3995f02539b3c39dd250468eb9014ef9dbb
+  scan_view: ba85fc554aba49b19503457dca649ba6f92b141f
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   Toast-Swift: e42a638589a2f95036b4bb7626cfbdde7daf0393
 
-PODFILE CHECKSUM: a31885a1f0f7765d36c2ce606a61bdcf7ae934be
+PODFILE CHECKSUM: 99bd32cc570d435352e151308ff4c67a4463ccba
 
 COCOAPODS: 1.8.1

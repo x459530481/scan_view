@@ -65,9 +65,9 @@ target 'Runner' do
     pod p[:name], :path => File.join(symlink, 'ios')
   }
 
-  # ios Pods
-  pod 'SnapKit', '~> 4.0'
-  pod 'Toast-Swift', '~> 4.0'
+#  # ios Pods
+#  pod 'SnapKit', '~> 4.0'
+#  pod 'Toast-Swift', '~> 4.0'
 end
 
 # Prevent Cocoapods from embedding a second Flutter framework and causing an error with the new Xcode build system.
