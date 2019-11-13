@@ -7,7 +7,7 @@ void main() => runApp(MaterialApp(home: TextViewExample()));
 
 class TextViewExample extends StatelessWidget {
   var myText = "Hello from Flutter!";
-  var scanViewController;
+  SmallScanViewController scanViewController;
   var context;
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class TextViewExample extends StatelessWidget {
           Center(
               child: Container(
                   width: 480.0,
-                  height: 300.0,
+                  height: 176.0,
 //                  child: TextView(
 //                    onTextViewCreated: _onTextViewCreated,
 //                  )
@@ -41,10 +41,12 @@ class TextViewExample extends StatelessWidget {
   void _doTorch() {
     if(open){
       open = false;
-      this.scanViewController.invokeMethod('torchOff');
+//      this.scanViewController.invokeMethod('torchOff');
+      this.scanViewController.setTorchOff();
     }else{
       open = true;
-      this.scanViewController.invokeMethod('torchOn');
+//      this.scanViewController.invokeMethod('torchOn');
+      this.scanViewController.setTorchOn();
     }
   }
 

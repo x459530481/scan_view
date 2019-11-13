@@ -29,6 +29,10 @@ class _SmallScanViewState extends State<SmallScanView> {
         viewType: 'plugins.xiaosi.smallscanview',
         onPlatformViewCreated: _onPlatformViewCreated,
       );
+    }else if(defaultTargetPlatform == TargetPlatform.iOS){
+      return UiKitView(viewType: "plugins.xiaosi.smallscanview",
+          onPlatformViewCreated: _onPlatformViewCreated
+      );
     }
     return Text(
         '$defaultTargetPlatform is not yet supported by the small_scan_view plugin');

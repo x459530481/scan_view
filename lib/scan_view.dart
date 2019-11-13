@@ -28,6 +28,10 @@ class _ScanViewState extends State<ScanView> {
         viewType: 'plugins.xiaosi.scanview',
         onPlatformViewCreated: _onPlatformViewCreated,
       );
+    }else if(defaultTargetPlatform == TargetPlatform.iOS){
+      return UiKitView(viewType: "plugins.xiaosi.scanview",
+          onPlatformViewCreated: _onPlatformViewCreated
+      );
     }
     return Text(
         '$defaultTargetPlatform is not yet supported by the text_view plugin');

@@ -37,6 +37,7 @@ end
 
 target 'Runner' do
   use_frameworks!
+  inhibit_all_warnings!
 
   # Prepare symlinks folder. We use symlinks to avoid having Podfile.lock
   # referring to absolute paths on developers' machines.
@@ -63,6 +64,10 @@ target 'Runner' do
     File.symlink(p[:path], symlink)
     pod p[:name], :path => File.join(symlink, 'ios')
   }
+
+  # ios Pods
+  pod 'SnapKit', '~> 4.0'
+  pod 'Toast-Swift', '~> 4.0'
 end
 
 # Prevent Cocoapods from embedding a second Flutter framework and causing an error with the new Xcode build system.

@@ -66,6 +66,7 @@ public class FlutterScanView implements PlatformView, MethodCallHandler  {
             @Override
             public void barcodeResult(BarcodeResult result) {
                 System.out.println(result.toString());
+                scanView.pause();
                 methodChannel.invokeMethod("getScanResult", result.getResult().getText());
             }
 
