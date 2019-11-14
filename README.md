@@ -14,9 +14,9 @@ For help getting started with Flutter, view our
 samples, guidance on mobile development, and a full API reference.
 
 ### demo
-ScanView为可全屏大取景框（取景框为正方形居中，宽高为宽度的70%）
+ScanView为可全屏大取景框（取景框为正方形居中，宽高为宽度的60%）
 
-SmallScanView为窄框取景（取景框为长方形居中，宽为宽度的70%、高度176写死了，有需要变更的自行修改源码）
+SmallScanView为窄框取景（取景框为长方形居中，宽为宽度的60%、高度176写死了，有需要变更的自行修改源码）
 
 
 ScanViewController和SmallScanViewController有六个方法
