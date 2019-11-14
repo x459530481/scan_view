@@ -34,6 +34,8 @@ setShowViewFinder()//显示取景框
 setHideViewFinder() //隐藏取景框
 
 
+例子：
+
 class DemoExample extends StatelessWidget {
 
   SmallScanViewController smallScanViewController;
