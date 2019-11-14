@@ -36,8 +36,6 @@ setHideViewFinder() //隐藏取景框
 
 class DemoExample extends StatelessWidget {
 
-//  ScanViewController scanViewController;
-
   SmallScanViewController smallScanViewController;
   
   var context;
@@ -61,14 +59,6 @@ class DemoExample extends StatelessWidget {
                   width: 480.0,
                   
                   height: 176.0,
-                  
-//                  child: ScanView(
-
-//                    onScanViewCreated: _onScanViewCreated,
-
-//                    onScanViewScanResult: _setScanResult,
-
-//                  )
 
                   child: SmallScanView(
                   
@@ -104,16 +94,12 @@ class DemoExample extends StatelessWidget {
     if(open){
     
       open = false;
-      
-//      this.scanViewController.setTorchOff();
 
       this.smallScanViewController.setTorchOff();
       
     }else{
     
       open = true;
-      
-//      this.scanViewController.setTorchOn();
 
       this.smallScanViewController.setTorchOn();
       
@@ -159,14 +145,6 @@ class DemoExample extends StatelessWidget {
         
   }
   
-//  void _onScanViewCreated(ScanViewController controller) {
-
-//    this.scanViewController = controller;
-
-//    this.scanViewController.setScanResume();
-
-//  }
-
 
   void _onSmallScanViewCreated(SmallScanViewController controller) {
   
