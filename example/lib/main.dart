@@ -6,8 +6,8 @@ import 'package:scan_view/small_scan_view.dart';
 void main() => runApp(MaterialApp(home: TextViewExample()));
 
 class TextViewExample extends StatelessWidget {
-  var myText = "Hello from Flutter!";
-  SmallScanViewController scanViewController;
+//  ScanViewController scanViewController;
+  SmallScanViewController smallScanViewController;
   var context;
   @override
   Widget build(BuildContext context) {
@@ -19,8 +19,9 @@ class TextViewExample extends StatelessWidget {
               child: Container(
                   width: 480.0,
                   height: 176.0,
-//                  child: TextView(
-//                    onTextViewCreated: _onTextViewCreated,
+//                  child: ScanView(
+//                    onScanViewCreated: _onScanViewCreated,
+//                    onScanViewScanResult: _setScanResult,
 //                  )
                   child: SmallScanView(
                     onSmallScanViewCreated: _onSmallScanViewCreated,
@@ -41,30 +42,25 @@ class TextViewExample extends StatelessWidget {
   void _doTorch() {
     if(open){
       open = false;
-//      this.scanViewController.invokeMethod('torchOff');
-      this.scanViewController.setTorchOff();
+//      this.scanViewController.setTorchOff();
+      this.smallScanViewController.setTorchOff();
     }else{
       open = true;
-//      this.scanViewController.invokeMethod('torchOn');
-      this.scanViewController.setTorchOn();
+//      this.scanViewController.setTorchOn();
+      this.smallScanViewController.setTorchOn();
     }
   }
 
   void _setScanResult(String str){
-//    setState(() {
-    myText = str;
-//    });
-
     showDialog(
         context: this.context,
         builder: (context) {
           return new AlertDialog(
-            title: new Text("错误1"),
-            content: new Text(myText),
+            title: new Text("提示"),
+            content: new Text(str),
             actions: <Widget>[
               new FlatButton(
                 onPressed: () {
-//                    callback.onOk();
                   Navigator.of(context).pop();
                 },
                 child: new Text("确认"),
@@ -76,23 +72,12 @@ class TextViewExample extends StatelessWidget {
   }
 
 //  void _onScanViewCreated(ScanViewController controller) {
-//////    controller.setText('Hello from Android!');
-////    int id = controller.id;
-////    _platform = new MethodChannel("plugins.xiaosi.scanview_$id");
-////    _platform.setMethodCallHandler((handler) {
-////      switch (handler.method) {
-////        case "getScanResult":
-////          _setScanResult(handler.arguments.toString());
-////          break;
-////      }
-////    });
-//    controller.setResume();
+//    this.scanViewController = controller;
+//    this.scanViewController.setResume();
 //  }
 
   void _onSmallScanViewCreated(SmallScanViewController controller) {
-    this.scanViewController = controller;
-    this.scanViewController.setResume();
+    this.smallScanViewController = controller;
+    this.smallScanViewController.setResume();
   }
-
-
 }
