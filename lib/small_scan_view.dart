@@ -67,7 +67,7 @@ class SmallScanViewController {
     });
   }
 
-  Future<void> setResume() async {
+  Future<void> setScanResume() async {
     return this._channel.invokeMethod('scanResume');
   }
   Future<void> setScanPause() async {
