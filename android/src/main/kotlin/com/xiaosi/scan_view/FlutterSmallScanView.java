@@ -30,6 +30,7 @@ import io.flutter.plugin.platform.PlatformView;
 import static io.flutter.plugin.common.MethodChannel.MethodCallHandler;
 import static io.flutter.plugin.common.MethodChannel.Result;
 
+@SuppressWarnings("unchecked")
 public class FlutterSmallScanView implements PlatformView, MethodCallHandler  {
     private final DecoratedBarcodeView scanView;
     private final MethodChannel methodChannel;
@@ -75,7 +76,7 @@ public class FlutterSmallScanView implements PlatformView, MethodCallHandler  {
             }
         });
 
-        Vector v = new Vector();
+        Vector<BarcodeFormat> v = new Vector();
         v.add(BarcodeFormat.QR_CODE);
         v.add(BarcodeFormat.CODE_128);
         v.add(BarcodeFormat.UPC_A);

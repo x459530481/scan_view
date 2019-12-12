@@ -8,7 +8,7 @@
         app:zxing_framing_rect_height="50dp"
         app:zxing_framing_rect_width="250dp" />
 
-    <com.xiaosi.flutter_native_log_plugin.QrView
+    <com.xiaosi.scan_view.QrView
         android:id="@+id/zxing_viewfinder_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

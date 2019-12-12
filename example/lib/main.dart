@@ -78,6 +78,6 @@ class TextViewExample extends StatelessWidget {
 
   void _onSmallScanViewCreated(SmallScanViewController controller) {
     this.smallScanViewController = controller;
-    this.smallScanViewController.setResume();
+    this.smallScanViewController.setScanResume();
   }
 }
