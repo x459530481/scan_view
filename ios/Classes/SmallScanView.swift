@@ -47,13 +47,17 @@ class SmallScanView: NSObject,FlutterPlatformView {
             }else if(call.method == "torchOff"){
                 self.torchOff()
             }else if(call.method == "scanPause"){
-                self.closeScan()
+                self.pauseScan()
             }else if(call.method == "scanResume"){
-                self.openScan()
+                self.resumeScan()
             }else if(call.method == "showViewFinder"){
                 self.barcodeView.isHidden = false
             }else if(call.method == "hideViewFinder"){
                 self.barcodeView.isHidden = true
+            }else if(call.method == "scanClose"){
+                self.closeScan()
+            }else if(call.method == "scanOpen"){
+                self.openScan()
             }
         });
     }
@@ -270,6 +274,19 @@ class SmallScanView: NSObject,FlutterPlatformView {
             timer = nil
         }
     }
+    func resumeScan() {
+       scannerStart()
+       if timer != nil {
+           timer.fireDate = Date.distantPast//计时器继续
+       }
+    }
+    func pauseScan() {
+       scannerStop()
+       if timer != nil {
+            timer.fireDate = Date.distantFuture// 计时器暂停
+       }
+    }
+    
     @objc private func processResult(_ codeStr: String) {
 //        logInfo(codeStr)
 //        scanResult?(codeStr)
