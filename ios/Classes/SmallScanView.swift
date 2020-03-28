@@ -284,7 +284,6 @@ class SmallScanView: NSObject,FlutterPlatformView {
             }
         }
         func resumeScan() {
-            canMove = true
             scanning = true
               //scannerStart()
               if timer != nil {
@@ -292,7 +291,6 @@ class SmallScanView: NSObject,FlutterPlatformView {
               }
            }
            func pauseScan() {
-               canMove = false
                scanning = false
               //scannerStop()
               if timer != nil {
