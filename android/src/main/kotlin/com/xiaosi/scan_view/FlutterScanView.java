@@ -115,6 +115,12 @@ public class FlutterScanView implements PlatformView, MethodCallHandler  {
             case "hideViewFinder":
                 scanView.getViewFinder().setVisibility(View.GONE);
                 break;
+            case "scanClose":
+                scanView.pause();
+                break;
+            case "scanOpen":
+                scanView.resume();
+                break;
             default:
                 result.notImplemented();
         }
