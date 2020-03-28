@@ -243,7 +243,7 @@ class SmallScanView: NSObject,FlutterPlatformView {
 //              }
     }
     @objc private func moveScannerLayer(_ timer: Timer) {
-        if(scanning){
+        if(canMove){
             UIView.animate(withDuration: 0) {
                 self.scanLine.snp.updateConstraints { (make) in
                     make.top.equalTo(0)
