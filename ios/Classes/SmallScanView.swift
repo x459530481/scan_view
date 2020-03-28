@@ -15,6 +15,7 @@ import Toast_Swift
 class SmallScanView: NSObject,FlutterPlatformView {
     
     var scanning = false
+    var canMove = false
     
     let frameC: CGRect;
     let viewId: Int64;
@@ -242,7 +243,7 @@ class SmallScanView: NSObject,FlutterPlatformView {
 //              }
     }
     @objc private func moveScannerLayer(_ timer: Timer) {
-        if(scanning){
+        if(canMove){
             UIView.animate(withDuration: 0) {
                 self.scanLine.snp.updateConstraints { (make) in
                     make.top.equalTo(0)
@@ -265,6 +266,7 @@ class SmallScanView: NSObject,FlutterPlatformView {
     }
       //public
         func openScan() {
+            canMove = true
             scanning = true
             scannerStart()
             if self.timer == nil {
@@ -273,6 +275,7 @@ class SmallScanView: NSObject,FlutterPlatformView {
             timer.fire()
         }
         func closeScan() {
+            canMove = false
             scanning = false
             scannerStop()
             if timer != nil {
@@ -281,6 +284,7 @@ class SmallScanView: NSObject,FlutterPlatformView {
             }
         }
         func resumeScan() {
+            canMove = true
             scanning = true
               //scannerStart()
               if timer != nil {
@@ -288,6 +292,7 @@ class SmallScanView: NSObject,FlutterPlatformView {
               }
            }
            func pauseScan() {
+               canMove = false
                scanning = false
               //scannerStop()
               if timer != nil {

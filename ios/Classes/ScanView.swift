@@ -15,6 +15,7 @@ import Toast_Swift
 class ScanView: NSObject,FlutterPlatformView {
     
     var scanning = false
+    var canMove = false
     
     let frameC: CGRect;
     let viewId: Int64;
@@ -267,6 +268,7 @@ class ScanView: NSObject,FlutterPlatformView {
     }
  //public
     func openScan() {
+        canMove = true
         scanning = true
         scannerStart()
         if self.timer == nil {
@@ -275,6 +277,7 @@ class ScanView: NSObject,FlutterPlatformView {
         timer.fire()
     }
     func closeScan() {
+        canMove = false
         scanning = false
         scannerStop()
         if timer != nil {
@@ -283,6 +286,7 @@ class ScanView: NSObject,FlutterPlatformView {
         }
     }
     func resumeScan() {
+        canMove = true
         scanning = true
           //scannerStart()
           if timer != nil {
@@ -290,6 +294,7 @@ class ScanView: NSObject,FlutterPlatformView {
           }
        }
        func pauseScan() {
+           canMove = false
            scanning = false
           //scannerStop()
           if timer != nil {
