@@ -84,4 +84,10 @@ class ScanViewController {
   Future<void> setHideViewFinder() async {
     return this._channel.invokeMethod('hideViewFinder');
   }
+  Future<void> setScanClose() async {
+    return this._channel.invokeMethod('scanClose');
+  }
+  Future<void> setScanOpen() async {
+    return this._channel.invokeMethod('scanOpen');
+  }
 }
