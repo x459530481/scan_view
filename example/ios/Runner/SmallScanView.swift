@@ -14,6 +14,8 @@ import Toast_Swift
 
 class SmallScanView: NSObject,FlutterPlatformView {
     
+    var scanning = false
+    
     let frameC: CGRect;
     let viewId: Int64;
     var messenger: FlutterBinaryMessenger!
@@ -261,6 +263,7 @@ class SmallScanView: NSObject,FlutterPlatformView {
     }
     //public
     func openScan() {
+        scanning = true
         scannerStart()
         if self.timer == nil {
             timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(moveScannerLayer(_:)), userInfo: nil, repeats: true)
@@ -268,6 +271,7 @@ class SmallScanView: NSObject,FlutterPlatformView {
         timer.fire()
     }
     func closeScan() {
+        scanning = false
         scannerStop()
         if timer != nil {
             timer.invalidate()
@@ -275,13 +279,15 @@ class SmallScanView: NSObject,FlutterPlatformView {
         }
     }
     func resumeScan() {
-          scannerStart()
+        scanning = true
+          //scannerStart()
           if timer != nil {
               timer.fireDate = Date.distantPast//计时器继续
           }
        }
        func pauseScan() {
-          scannerStop()
+           scanning = false
+          //scannerStop()
           if timer != nil {
                timer.fireDate = Date.distantFuture// 计时器暂停
           }
@@ -299,14 +305,17 @@ class SmallScanView: NSObject,FlutterPlatformView {
 
 extension SmallScanView: AVCaptureMetadataOutputObjectsDelegate {
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
-        if metadataObjects != nil && metadataObjects.count > 0 {
-            let metaData = metadataObjects.first as! AVMetadataMachineReadableCodeObject
-            //            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
-            let sacnStr = metaData.stringValue
-            self.scannerStop()
-            DispatchQueue.main.async(execute: {
-                self.processResult(sacnStr ?? "")
-            })
+        if(self.scanning){
+            self.scanning = false
+            if metadataObjects != nil && metadataObjects.count > 0 {
+                let metaData = metadataObjects.first as! AVMetadataMachineReadableCodeObject
+                //            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+                let sacnStr = metaData.stringValue
+    //            self.scannerStop()
+                DispatchQueue.main.async(execute: {
+                    self.processResult(sacnStr ?? "")
+                })
+            }
         }
     }
 }
