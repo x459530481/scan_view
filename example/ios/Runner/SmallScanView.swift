@@ -242,17 +242,19 @@ class SmallScanView: NSObject,FlutterPlatformView {
 //              }
     }
     @objc private func moveScannerLayer(_ timer: Timer) {
-        UIView.animate(withDuration: 0) {
-            self.scanLine.snp.updateConstraints { (make) in
-                make.top.equalTo(0)
+        if(scanning){
+            UIView.animate(withDuration: 0) {
+                self.scanLine.snp.updateConstraints { (make) in
+                    make.top.equalTo(0)
+                }
+                self.barcodeView.layoutIfNeeded()
             }
-            self.barcodeView.layoutIfNeeded()
-        }
-        UIView.animate(withDuration: 2.0) {
-            self.scanLine.snp.updateConstraints { (make) in
-                make.top.equalTo(self.barcodeView.bounds.height)
+            UIView.animate(withDuration: 2.0) {
+                self.scanLine.snp.updateConstraints { (make) in
+                    make.top.equalTo(self.barcodeView.bounds.height)
+                }
+                self.barcodeView.layoutIfNeeded()
             }
-            self.barcodeView.layoutIfNeeded()
         }
     }
     func scannerStart() {
