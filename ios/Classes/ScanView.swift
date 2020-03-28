@@ -305,7 +305,7 @@ class ScanView: NSObject,FlutterPlatformView {
     }
 }
 
-extension SmallScanView: AVCaptureMetadataOutputObjectsDelegate {
+extension ScanView: AVCaptureMetadataOutputObjectsDelegate {
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         if(self.scanning){
             self.scanning = false
