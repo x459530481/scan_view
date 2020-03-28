@@ -15,7 +15,6 @@ import Toast_Swift
 class SmallScanView: NSObject,FlutterPlatformView {
     
     var scanning = false
-    var canMove = false
     
     let frameC: CGRect;
     let viewId: Int64;
@@ -243,19 +242,17 @@ class SmallScanView: NSObject,FlutterPlatformView {
 //              }
     }
     @objc private func moveScannerLayer(_ timer: Timer) {
-        if(canMove){
-            UIView.animate(withDuration: 0) {
-                self.scanLine.snp.updateConstraints { (make) in
-                    make.top.equalTo(0)
-                }
-                self.barcodeView.layoutIfNeeded()
+        UIView.animate(withDuration: 0) {
+            self.scanLine.snp.updateConstraints { (make) in
+                make.top.equalTo(0)
             }
-            UIView.animate(withDuration: 2.0) {
-                self.scanLine.snp.updateConstraints { (make) in
-                    make.top.equalTo(self.barcodeView.bounds.height)
-                }
-                self.barcodeView.layoutIfNeeded()
+            self.barcodeView.layoutIfNeeded()
+        }
+        UIView.animate(withDuration: 2.0) {
+            self.scanLine.snp.updateConstraints { (make) in
+                make.top.equalTo(self.barcodeView.bounds.height)
             }
+            self.barcodeView.layoutIfNeeded()
         }
     }
     func scannerStart() {
@@ -266,7 +263,6 @@ class SmallScanView: NSObject,FlutterPlatformView {
     }
       //public
         func openScan() {
-            canMove = true
             scanning = true
             scannerStart()
             if self.timer == nil {
@@ -275,7 +271,6 @@ class SmallScanView: NSObject,FlutterPlatformView {
             timer.fire()
         }
         func closeScan() {
-            canMove = false
             scanning = false
             scannerStop()
             if timer != nil {
@@ -286,16 +281,16 @@ class SmallScanView: NSObject,FlutterPlatformView {
         func resumeScan() {
             scanning = true
               //scannerStart()
-              if timer != nil {
-                  timer.fireDate = Date.distantPast//计时器继续
-              }
+//              if timer != nil {
+//                  timer.fireDate = Date.distantPast//计时器继续
+//              }
            }
            func pauseScan() {
                scanning = false
               //scannerStop()
-              if timer != nil {
-                   timer.fireDate = Date.distantFuture// 计时器暂停
-              }
+//              if timer != nil {
+//                   timer.fireDate = Date.distantFuture// 计时器暂停
+//              }
            }
         @objc private func processResult(_ codeStr: String) {
     //        logInfo(codeStr)
