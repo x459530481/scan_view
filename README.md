@@ -33,6 +33,10 @@ setShowViewFinder()//显示取景框
 
 setHideViewFinder() //隐藏取景框
 
+scanClose()//关闭扫码
+
+scanOpen() //开启扫码
+
 
 例子：
 
@@ -113,6 +117,8 @@ class DemoExample extends StatelessWidget {
 
   void _setScanResult(String str){
   
+    this.smallScanViewController.setScanPause();
+  
     showDialog(
     
         context: this.context,
@@ -152,7 +158,7 @@ class DemoExample extends StatelessWidget {
   
     this.smallScanViewController = controller;
     
-    this.smallScanViewController.setScanResume();
+    this.smallScanViewController.scanOpen();
     
   }
   
