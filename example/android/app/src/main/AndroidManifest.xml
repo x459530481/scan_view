@@ -1,5 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.xiaosi.scan_view_example">
+
+    <uses-sdk tools:overrideLibrary="com.google.zxing.client.android" />
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.CAMERA"/>
@@ -29,6 +32,7 @@
          additional functionality it is fine to subclass or reimplement
          FlutterApplication and put your custom class here. -->
     <application
+        android:hardwareAccelerated="true"
         android:name="io.flutter.app.FlutterApplication"
         android:label="scan_view_example"
         android:icon="@mipmap/ic_launcher">
