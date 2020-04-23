@@ -25,6 +25,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
+    buildToolsVersion '28.0.3'
     compileSdkVersion 28
 
     sourceSets {
@@ -41,5 +42,8 @@ android {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'com.journeyapps:zxing-android-embedded:3.6.0'
+//    implementation 'com.journeyapps:zxing-android-embedded:3.6.0'
+    implementation('com.journeyapps:zxing-android-embedded:4.1.0') { transitive = false }
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'com.google.zxing:core:3.3.0'
 }

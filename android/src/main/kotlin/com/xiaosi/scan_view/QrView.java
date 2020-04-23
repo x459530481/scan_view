@@ -8,6 +8,7 @@ import android.graphics.Shader;
 import android.util.AttributeSet;
 
 import com.google.zxing.ResultPoint;
+import com.journeyapps.barcodescanner.Size;
 import com.journeyapps.barcodescanner.ViewfinderView;
 
 import java.util.ArrayList;
@@ -36,7 +37,7 @@ public class QrView extends ViewfinderView {
         int CORNER_WIDTH = 15;
         refreshSizes();
 
-        if (framingRect == null || previewFramingRect == null) {
+        if (framingRect == null || previewSize == null) {
             return;
         }
 
@@ -46,7 +47,7 @@ public class QrView extends ViewfinderView {
 //        previewFramingRect.set(previewFramingRect.left,50,previewFramingRect.right,previewFramingRect.bottom - height2);
 
         Rect frame = framingRect;
-        Rect previewFrame = previewFramingRect;
+        Size previewFrame = previewSize;
 
 
 
@@ -91,8 +92,8 @@ public class QrView extends ViewfinderView {
             //绘制扫描线
             canvas.drawRect(frame.left + 1, frame.top + laserLinePosition, frame.right - 1, frame.top + 10 + laserLinePosition, paint);
             paint.setShader(null);
-            float scaleX = frame.width() / (float) previewFrame.width();
-            float scaleY = frame.height() / (float) previewFrame.height();
+            float scaleX = frame.width() / (float) previewFrame.width;
+            float scaleY = frame.height() / (float) previewFrame.height;
 
             List<ResultPoint> currentPossible = possibleResultPoints;
             List<ResultPoint> currentLast = lastPossibleResultPoints;
