@@ -126,6 +126,7 @@ class ScanView: NSObject,FlutterPlatformView {
     private func buildScanerxx() {
         initMethodChannel()
         
+        print(NSLocalizedString("1111111111", comment:"111111111111111"))
         cameraView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: cameraViewHeight))
         self.scanview.addSubview(cameraView)
         cameraView.snp.makeConstraints { (make) in
@@ -147,7 +148,7 @@ class ScanView: NSObject,FlutterPlatformView {
 //                    captureSession.removeInput(inputItem)
 //                }
 //            }
-            if captureSession.inputs.isEmpty {
+            if captureSession.inputs.count == 0 {
                 self.captureSession.addInput(input)
             }
 //            //把输入流添加到会话
@@ -158,7 +159,7 @@ class ScanView: NSObject,FlutterPlatformView {
 //                   captureSession.removeOutput(outputItem)
 //               }
 //            }
-            if captureSession.outputs.isEmpty {
+            if captureSession.outputs.count == 0 {
                 self.captureSession.addInput(output)
             }
 //            //把输出流添加到会话
