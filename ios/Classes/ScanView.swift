@@ -142,21 +142,27 @@ class ScanView: NSObject,FlutterPlatformView {
         do {
             //创建输入流
             input = try AVCaptureDeviceInput(device: captureDevice!)
-            if let inputs = captureSession.inputs as? [AVCaptureDeviceInput] {
-                for inputItem in inputs {
-                    captureSession.removeInput(inputItem)
-                }
-            }
-            //把输入流添加到会话
-            captureSession.addInput(input)
-            
-            if let outputs = captureSession.outputs as? [AVCaptureMetadataOutput] {
-               for outputItem in outputs {
-                   captureSession.removeOutput(outputItem)
-               }
-            }
-            //把输出流添加到会话
-            captureSession.addOutput(output)
+            //            if let inputs = captureSession.inputs as? [AVCaptureDeviceInput] {
+            //                for inputItem in inputs {
+            //                    captureSession.removeInput(inputItem)
+            //                }
+            //            }
+                        if captureSession.inputs.isEmpty {
+                            self.captureSession.addInput(deviceInput)
+                        }
+            //            //把输入流添加到会话
+            //            captureSession.addInput(input)
+                        
+            //            if let outputs = captureSession.outputs as? [AVCaptureMetadataOutput] {
+            //               for outputItem in outputs {
+            //                   captureSession.removeOutput(outputItem)
+            //               }
+            //            }
+                        if captureSession.outputs.isEmpty {
+                            self.captureSession.addInput(output)
+                        }
+            //            //把输出流添加到会话
+            //            captureSession.addOutput(output)
         } catch {
             print(NSLocalizedString("异常", comment:"异常"))
             let err = error as NSError
