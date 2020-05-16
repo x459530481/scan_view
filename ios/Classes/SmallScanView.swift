@@ -146,20 +146,20 @@ class SmallScanView: NSObject,FlutterPlatformView {
             //                    captureSession.removeInput(inputItem)
             //                }
             //            }
-                        if captureSession.inputs.count == 0 {
-                            self.captureSession.addInput(input)
-                        }
-            //            //把输入流添加到会话
-            //            captureSession.addInput(input)
-                        
-            //            if let outputs = captureSession.outputs as? [AVCaptureMetadataOutput] {
-            //               for outputItem in outputs {
-            //                   captureSession.removeOutput(outputItem)
-            //               }
-            //            }
-                        if captureSession.outputs.count == 0 {
-                            self.captureSession.addOutput(output)
-                        }
+                                    if (captureSession.canAddInput(input)) {
+                                        captureSession.addInput(input)
+                                    }
+                        //            //把输入流添加到会话
+                        //            captureSession.addInput(input)
+                                    
+                        //            if let outputs = captureSession.outputs as? [AVCaptureMetadataOutput] {
+                        //               for outputItem in outputs {
+                        //                   captureSession.removeOutput(outputItem)
+                        //               }
+                        //            }
+                                    if (captureSession.canAddOutput(output)) {
+                                        captureSession.addOutput(output)
+                                    }
             //            //把输出流添加到会话
             //            captureSession.addOutput(output)
         } catch {
@@ -174,13 +174,16 @@ class SmallScanView: NSObject,FlutterPlatformView {
         let dispatchQueue = DispatchQueue(label: "queue", attributes: [])
         //设置输出流的代理
         output.setMetadataObjectsDelegate(self, queue: dispatchQueue)
-        //设置输出媒体的数据类型
-        output.metadataObjectTypes = [AVMetadataObject.ObjectType.qr,
-                                      AVMetadataObject.ObjectType.ean8,
-                                      AVMetadataObject.ObjectType.ean13,
-                                      AVMetadataObject.ObjectType.code128,
-                                      AVMetadataObject.ObjectType.code39,
-                                      AVMetadataObject.ObjectType.upce, AVMetadataObject.ObjectType.code39Mod43, AVMetadataObject.ObjectType.code93, AVMetadataObject.ObjectType.pdf417]
+//        //设置输出媒体的数据类型
+//        output.metadataObjectTypes = [AVMetadataObject.ObjectType.qr,
+//                                      AVMetadataObject.ObjectType.ean8,
+//                                      AVMetadataObject.ObjectType.ean13,
+//                                      AVMetadataObject.ObjectType.code128,
+//                                      AVMetadataObject.ObjectType.code39,
+//                                      AVMetadataObject.ObjectType.upce, AVMetadataObject.ObjectType.code39Mod43, AVMetadataObject.ObjectType.code93, AVMetadataObject.ObjectType.pdf417]
+        
+                output.metadataObjectTypes = output.availableMetadataObjectTypes
+        
         //创建预览图层
         let videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         //设置预览图层的填充方式
