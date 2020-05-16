@@ -23,19 +23,33 @@ class SmallScanView: NSObject,FlutterPlatformView {
     var scanview: UIView = UIView()
     
     var methodChannel:FlutterMethodChannel?
+    var first = true
     
     init(_ frame: CGRect,viewID: Int64,args :Any?, binaryMessenger: FlutterBinaryMessenger) {
         self.frameC = frame;
         self.viewId = viewID;
         self.messenger=binaryMessenger;
         
+        print(NSLocalizedString("init aaaaaa", comment:"aaaaaaa"))
 //        super.init()
 //        self.buildScanerxx()
+        
+        
+        
     }
     
     func view() -> UIView {
-        buildScanerxx()
+        if(first){
+            first = false
+            self.initMethodChannel()
+            buildScanerxx()
+        }
+        
+        print(NSLocalizedString(" aaaaaa", comment:"aaaaaaa"))
+
         return scanview
+        
+        
     }
     
     
@@ -122,7 +136,6 @@ class SmallScanView: NSObject,FlutterPlatformView {
     
     // MARK: - 扫码相关的方法
     private func buildScanerxx() {
-        initMethodChannel()
         
         print(NSLocalizedString("1111111111", comment:"111111111111111"))
         cameraView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: cameraViewHeight))

@@ -14,6 +14,7 @@ class SmallScanViewFactory : NSObject,FlutterPlatformViewFactory{
     var messenger: FlutterBinaryMessenger!
     
     func create(withFrame frame: CGRect, viewIdentifier viewId: Int64, arguments args: Any?) -> FlutterPlatformView {
+        print(NSLocalizedString("2222222", comment:"222222222"))
         return SmallScanView(frame,viewID : viewId , args : args,binaryMessenger:messenger);
     }
     

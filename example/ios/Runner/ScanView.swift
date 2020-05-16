@@ -24,17 +24,25 @@ class ScanView: NSObject,FlutterPlatformView {
     
     var methodChannel:FlutterMethodChannel?
     
+    var first = true
+    
     init(_ frame: CGRect,viewID: Int64,args :Any?, binaryMessenger: FlutterBinaryMessenger) {
         self.frameC = frame;
         self.viewId = viewID;
         self.messenger=binaryMessenger;
         
+        print(NSLocalizedString("init aaaaaa", comment:"aaaaaaa"))
 //        super.init()
 //        self.buildScanerxx()
     }
     
     func view() -> UIView {
-        buildScanerxx()
+        if(first){
+            first = false
+            self.initMethodChannel()
+            buildScanerxx()
+        }
+        print(NSLocalizedString("aaaaaa", comment:"aaaaaaa"))
         return scanview
     }
     
