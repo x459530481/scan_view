@@ -142,6 +142,11 @@ class ScanView: NSObject,FlutterPlatformView {
         do {
             //创建输入流
             input = try AVCaptureDeviceInput(device: captureDevice!)
+            if let inputs = captureSession.inputs as? [AVCaptureDeviceInput] {
+                for inputItem in inputs {
+                    captureSession.removeInput(inputItem)
+                }
+            }
             //把输入流添加到会话
             captureSession.addInput(input)
             //把输出流添加到会话
