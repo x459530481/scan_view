@@ -147,6 +147,13 @@ class SmallScanView: NSObject,FlutterPlatformView {
             }
             //把输入流添加到会话
             captureSession.addInput(input)
+            
+            
+            if let outputs = captureSession.outputs as? [AVCaptureMetadataOutput] {
+               for outputItem in outputs {
+                   captureSession.removeOutput(outputItem)
+               }
+            }
             //把输出流添加到会话
             captureSession.addOutput(output)
         } catch {
