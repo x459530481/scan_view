@@ -158,7 +158,7 @@ class SmallScanView: NSObject,FlutterPlatformView {
             //               }
             //            }
                         if captureSession.outputs.count == 0 {
-                            self.captureSession.addInput(output)
+                            self.captureSession.addOutput(output)
                         }
             //            //把输出流添加到会话
             //            captureSession.addOutput(output)
