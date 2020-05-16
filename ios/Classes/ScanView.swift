@@ -148,7 +148,7 @@ class ScanView: NSObject,FlutterPlatformView {
             //                }
             //            }
                         if captureSession.inputs.isEmpty {
-                            self.captureSession.addInput(deviceInput)
+                            self.captureSession.addInput(input)
                         }
             //            //把输入流添加到会话
             //            captureSession.addInput(input)
