@@ -339,13 +339,21 @@ class ScanView: NSObject,FlutterPlatformView {
 extension ScanView: AVCaptureMetadataOutputObjectsDelegate {
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         if metadataObjects != nil && metadataObjects.count > 0 {
-            let metaData = metadataObjects.first as! AVMetadataMachineReadableCodeObject
-            //            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
-            let sacnStr = metaData.stringValue
-//            self.scannerStop()
-            DispatchQueue.main.async(execute: {
-                self.processResult(sacnStr ?? "")
-            })
+//            let metaData = metadataObjects.first as! AVMetadataMachineReadableCodeObject
+//            //            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+//            let sacnStr = metaData.stringValue
+////            self.scannerStop()
+//            DispatchQueue.main.async(execute: {
+//                self.processResult(sacnStr ?? "")
+//            })
+            if let metadataObject = metadataObjects.first
+            {
+                guard let readableObject = metadataObject as? AVMetadataMachineReadableCodeObject else { return }
+                guard let stringValue = readableObject.stringValue else { return }
+                DispatchQueue.main.async(execute: {
+                                     self.processResult(stringValue ?? "")
+                                 })
+            }
         }
     }
 }

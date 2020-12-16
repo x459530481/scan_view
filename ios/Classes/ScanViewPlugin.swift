@@ -14,8 +14,8 @@ class ScanViewPlugin {
         let pluginKey = "Scan_View_Plugin";
         if (registry.hasPlugin(pluginKey)) {return};
         let registrar = registry.registrar(forPlugin: pluginKey);
-        let messenger = registrar.messenger() as! (NSObject & FlutterBinaryMessenger)
-        registrar.register(ScanViewFactory(messenger:messenger),withId: "plugins.xiaosi.scanview");
+        let messenger = registrar?.messenger() as! (NSObject & FlutterBinaryMessenger)
+        registrar?.register(ScanViewFactory(messenger:messenger),withId: "plugins.xiaosi.scanview");
         
     }
 }

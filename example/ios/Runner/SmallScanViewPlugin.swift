@@ -14,8 +14,8 @@ class SmallScanViewPlugin {
         let pluginKey = "Small_Scan_View_Plugin";
         if (registry.hasPlugin(pluginKey)) {return};
         let registrar = registry.registrar(forPlugin: pluginKey);
-        let messenger = registrar.messenger() as! (NSObject & FlutterBinaryMessenger)
-        registrar.register(SmallScanViewFactory(messenger:messenger),withId: "plugins.xiaosi.smallscanview");
+        let messenger = registrar?.messenger() as! (NSObject & FlutterBinaryMessenger)
+        registrar?.register(SmallScanViewFactory(messenger:messenger),withId: "plugins.xiaosi.smallscanview");
         
     }
 }

@@ -342,13 +342,54 @@ class SmallScanView: NSObject,FlutterPlatformView {
     extension SmallScanView: AVCaptureMetadataOutputObjectsDelegate {
         func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
             if metadataObjects != nil && metadataObjects.count > 0 {
-                let metaData = metadataObjects.first as! AVMetadataMachineReadableCodeObject
-                //            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
-                let sacnStr = metaData.stringValue
-    //            self.scannerStop()
-                DispatchQueue.main.async(execute: {
-                    self.processResult(sacnStr ?? "")
-                })
+//               var sacnStr = ""
+//                let mObjType = type(of:metadataObjects.first!)
+//                if #available(iOS 13.0, *) {
+//                    if(mObjType == AVMetadataSalientObject.self){
+//                        let metaData = metadataObjects.first as! AVMetadataSalientObject
+//                        if(metaData.accessibilityHint != nil){
+//                            print("metaData.accessibilityHint" + metaData.accessibilityHint!)
+//                        }
+//                        if(metaData.accessibilityLabel != nil){
+//                            print("metaData.accessibilityLabel" + metaData.accessibilityLabel!)
+//                        }
+//                        if(metaData.accessibilityLanguage != nil){
+//                            print("metaData.accessibilityLanguage" + metaData.accessibilityLanguage!)
+//                        }
+//                        if(metaData.accessibilityValue != nil){
+//                            print("metaData.accessibilityValue" + metaData.accessibilityValue!)
+//                        }
+//                        if(metaData.debugDescription != nil){
+//                            print("metaData.debugDescription" + metaData.debugDescription)
+//                        }
+//                        if(metaData.description != nil){
+//                            print("metaData.description" + metaData.description)
+//                        }
+//                    }
+//                } else {
+//                    if(mObjType == AVMetadataMachineReadableCodeObject.self){
+//                        let metaData = metadataObjects.first as! AVMetadataMachineReadableCodeObject
+//                        sacnStr = metaData.stringValue!
+//                    }
+//                }
+//                             //            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+//
+//                //            self.scannerStop()
+//                            DispatchQueue.main.async(execute: {
+//                                self.processResult(sacnStr ?? "")
+//                            })
+                
+                if let metadataObject = metadataObjects.first
+                {
+                    guard let readableObject = metadataObject as? AVMetadataMachineReadableCodeObject else { return }
+                    guard let stringValue = readableObject.stringValue else { return }
+                    DispatchQueue.main.async(execute: {
+                                         self.processResult(stringValue ?? "")
+                                     })
+                }
+                
+                
+
             }
         }
     }

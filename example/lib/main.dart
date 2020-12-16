@@ -33,7 +33,11 @@ class TextViewExample extends StatelessWidget {
               flex: 3,
               child: Container(
                   color: Colors.blue[100],
-                  child: Center(child: RaisedButton(onPressed: _doTorch, child: Text("手电"))))),
+                  child: Center(child: RaisedButton(onPressed: _doTorch, child: Text("手电"))))),     Expanded(
+              flex: 3,
+              child: Container(
+                  color: Colors.blue[100],
+                  child: Center(child: RaisedButton(onPressed: _doResume, child: Text("doResume"))))),
 
         ]));
   }
@@ -51,7 +55,14 @@ class TextViewExample extends StatelessWidget {
     }
   }
 
+  void _doResume() {
+    Future.delayed(Duration(milliseconds: 1000)).then((e) {
+      this.smallScanViewController.setScanResume();
+    });
+  }
+
   void _setScanResult(String str){
+    smallScanViewController.setScanPause();
     showDialog(
         context: this.context,
         builder: (context) {
@@ -78,6 +89,8 @@ class TextViewExample extends StatelessWidget {
 
   void _onSmallScanViewCreated(SmallScanViewController controller) {
     this.smallScanViewController = controller;
-    this.smallScanViewController.setScanResume();
+    Future.delayed(Duration(milliseconds: 500)).then((e) {
+      this.smallScanViewController.setScanOpen();
+    });
   }
 }
